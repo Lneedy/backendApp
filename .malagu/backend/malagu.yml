@@ -1,0 +1,48 @@
+malagu:
+  logger:
+    level: info
+  session:
+    autoCommit: true
+    maxAge: 86400000
+    sessionIdKey: 'malagu:sessionId'
+    sessionKey: 'malagu:session'
+  server:
+    path: /
+    port: 3000
+  trace:
+    responseField: X-Malagu-Trace-ID
+  mvc:
+    path: /*
+    defaultViewName: json
+  mustache:
+    cache: false
+    baseViewDir: assets/views
+  web:
+    serveHooks: false
+  core:
+    validationPipeOptions:
+      detailedOutputDisabled: false
+      transformEnabled: true
+  cookies:
+    keys:
+      - abcdef
+webpackHooks: []
+initHooks: []
+buildHooks: []
+deployHooks: []
+serveHooks: []
+deployConfig:
+  type: http
+targets:
+  - backend
+entry:
+  http: '@malagu/fc-adapter/lib/node/http-application-entry'
+  api-gateway: '@malagu/fc-adapter/lib/node/api-gateway-application-entry'
+devEntry:
+  http: '@malagu/fc-adapter/lib/node/http-application-entry'
+  api-gateway: '@malagu/fc-adapter/lib/node/api-gateway-application-entry'
+modules:
+  - src\module
+assets: []
+mode:
+  - local
